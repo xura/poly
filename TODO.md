@@ -1,0 +1,10 @@
+- [ ] validate poly-config.json file (eg. show an error "project2 is missing repo location") with io-ts
+- [ ] Run multiple projects and show error when one fails to build
+- [ ] run prettier and eslint on all projects (detect if there is project specific config for prettier/eslint) and automatically checkin the changes
+- [ ] Ability to push all projects to repos (checking in can be done from vsacode for now)
+- [ ] Ability to tag all projects (as on version or as multiple versions)
+- [ ] Run e2e tests for entire project
+- [ ] Wizard for adding a project
+- [ ] Add dependencies to single/all project(s)
+- [ ] Install all deps for all projects
+- [ ] pull down all projects (or "get" command that downloads a poly-config.json from a git repo and pull downs all projects)
