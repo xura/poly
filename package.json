@@ -2,6 +2,7 @@
   "name": "poly",
   "version": "0.0.0",
   "author": "Joe Badaczewski @joe307bad",
+  "package": "CLI tool for managing polyrepos",
   "bin": {
     "poly": "./bin/run"
   },
@@ -26,9 +27,12 @@
     "fp-ts": "^2.5.3",
     "globby": "^10",
     "io-ts": "^2.2.0",
+    "io-ts-reporters": "^1.0.0",
     "mocha": "^5",
     "nyc": "^14",
+    "reflect-metadata": "^0.1.13",
     "ts-node": "^8",
+    "tsyringe": "^4.1.0",
     "typescript": "^3.3"
   },
   "engines": {
@@ -51,7 +55,15 @@
     "bin": "poly",
     "plugins": [
       "@oclif/plugin-help"
-    ]
+    ],
+    "hooks": {
+      "init": "./lib/hooks/init/init"
+    },
+    "topics": {
+      "run": {
+        "description": "Run project(s)"
+      }
+    }
   },
   "repository": "xura/poly",
   "scripts": {

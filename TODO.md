@@ -1,5 +1,7 @@
-- [ ] validate poly-config.json file (eg. show an error "project2 is missing repo location") with io-ts
+- [X] validate poly-config.json file (eg. show an error "project2 is missing repo location") with io-ts
 - [ ] Run multiple projects and show error when one fails to build
+- [ ] Run all projects excluding one
+- [ ] Run a single project
 - [ ] run prettier and eslint on all projects (detect if there is project specific config for prettier/eslint) and automatically checkin the changes
 - [ ] Ability to push all projects to repos (checking in can be done from vsacode for now)
 - [ ] Ability to tag all projects (as on version or as multiple versions)

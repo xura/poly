@@ -1164,7 +1164,7 @@ foreground-child@^1.5.6:
     cross-spawn "^4"
     signal-exit "^3.0.0"
 
-fp-ts@^2.5.3:
+fp-ts@^2.0.2, fp-ts@^2.5.3:
   version "2.5.3"
   resolved "https://registry.yarnpkg.com/fp-ts/-/fp-ts-2.5.3.tgz#7f09cc7f3e09623c6ade303d98a2cccdb2cc861f"
   integrity sha512-lQd+hahLd8cygNoXbEHDjH/cbF6XVWlEPb8h5GXXlozjCSDxWgclvkpOoTRfBA0P+r69l9VvW1nEsSGIJRQpWw==
@@ -1427,7 +1427,15 @@ inquirer@^6.2.2:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-io-ts@^2.2.0:
+io-ts-reporters@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/io-ts-reporters/-/io-ts-reporters-1.0.0.tgz#c5901d49d454956698bbca48b328698f8ca1c9c7"
+  integrity sha512-jjMvTnFYYxX3ue3cajmqCAf7sM4+lFvaaUuAL+otJv2DE+WDxYvQeCcUYveoq37rVSftJHZBEOrnvz3x0VdRXA==
+  dependencies:
+    fp-ts "^2.0.2"
+    io-ts "^2.0.0"
+
+io-ts@^2.0.0, io-ts@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/io-ts/-/io-ts-2.2.0.tgz#e01ee2031098f05ab2ef17d137b8bebc928644e2"
   integrity sha512-BIZkC9IJ1ix8v3ttSWb5CWVzbEbMkGwjl0dMBGCXVT921/4f/9wAngsqA8VLXFe5JjLJ3INxBufz3BaQVf2zKw==
@@ -2169,6 +2177,11 @@ redeyed@~2.1.0:
   dependencies:
     esprima "~4.0.0"
 
+reflect-metadata@^0.1.13:
+  version "0.1.13"
+  resolved "https://registry.yarnpkg.com/reflect-metadata/-/reflect-metadata-0.1.13.tgz#67ae3ca57c972a2aa1642b10fe363fe32d49dc08"
+  integrity sha512-Ts1Y/anZELhSsjMcU605fU9RE4Oi3p5ORujwbIKXfWa+0Zxs510Qrmrce5/Jowq3cHSZSJqBjypxmHarc+vEWg==
+
 regexpp@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
@@ -2617,6 +2630,13 @@ tsutils@^3.17.1:
   integrity sha512-kzeQ5B8H3w60nFY2g8cJIuH7JDpsALXySGtwGJ0p2LSjLgay3NdIpqq5SoOBe46bKDW2iq25irHCr8wjomUS2g==
   dependencies:
     tslib "^1.8.1"
+
+tsyringe@^4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/tsyringe/-/tsyringe-4.1.0.tgz#9a0c34b332dee2173b968fb739d24c4e174d3086"
+  integrity sha512-a0YXEiUNkv/Q1cvniiKd/Qv7TNa7xaFaTTekdloUmZD//aFXQ4PsGfq/cuicMLtHrOQE2QHbCAqdPfQ9wyqN0w==
+  dependencies:
+    tslib "^1.9.3"
 
 tunnel-agent@^0.6.0:
   version "0.6.0"

@@ -1,11 +1,11 @@
 import { Command, flags } from '@oclif/command'
-import { Config, Logger as log } from '../services'
+import { Runner } from '../../services'
 
-export default class Run extends Command {
+export default class All extends Command {
   static description = 'Run all projects'
 
   static examples = [
-    `$ poly run`,
+    `$ poly run:all`,
   ]
 
   // static flags = {
@@ -16,11 +16,13 @@ export default class Run extends Command {
   //   force: flags.boolean({ char: 'f' }),
   // }
 
-  static args = [{ name: 'file' }]
+  // static args = [{ name: 'file' }]
 
   async run() {
-    const c = new Config();
-    c.setConfig().catch(e => log.error(e));
+    // const c = new Config();
+    // c.useConfig().catch(e => log.error(e));
+
+    const runner = new Runner();
 
     // const {args, flags} = this.parse(Hello)
     // this.log(`Does config exist? ${configFile} ${fs.existsSync(configFile)}`)
