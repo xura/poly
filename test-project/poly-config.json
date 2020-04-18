@@ -1,4 +1,6 @@
 {
-    "config": "qwdqw",
-    "wdwfew": "wefwe"
+    "projects": [
+        "project1",
+        "project2"
+    ]
 }

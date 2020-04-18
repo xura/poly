@@ -1,7 +1,7 @@
 import { IConfig, IRunner } from '../interfaces';
 import { inject, autoInjectable } from 'tsyringe';
 import { Logger as log } from '../services/logger';
-import { exists } from '../shared/helpers';
+import { exists } from '../shared/assertions';
 
 
 

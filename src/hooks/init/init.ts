@@ -3,9 +3,7 @@ import { Hook } from '@oclif/config'
 import { Config, Webpack } from '../../adapters'
 
 export const inject = () => {
-    container.register('IConfig', {
-        useFactory: () => new Config()
-    })
+    container.registerSingleton('IConfig', Config);
     container.register('IRunner', Webpack)
 }
 

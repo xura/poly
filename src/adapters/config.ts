@@ -2,13 +2,13 @@ import * as path from 'path'
 import * as fs from 'fs'
 import { Parser as parse, Logger as log } from '../services';
 import * as t from 'io-ts';
-import { isLeft, Either, left } from 'fp-ts/lib/Either'
+import { isLeft, Either, left, right } from 'fp-ts/lib/Either'
 import { IConfig } from '../interfaces';
 import { singleton } from 'tsyringe';
 const fsp = fs.promises;
 
 const RConfig = t.type({
-    config: t.string
+    projects: t.array(t.string)
 })
 
 type TConfig = t.TypeOf<typeof RConfig>
@@ -26,7 +26,9 @@ const POLY_CONFIG_FILE_NAME = 'poly-config.json';
 @singleton()
 export class Config implements IConfig {
 
-    private _config: Either<undefined, TConfig> = left(undefined);
+    private _config: Either<null, TConfig> = left(null);
+
+    public projects: Either<null, string[]> = left(null);
 
     public useConfig = (): Promise<string> => new Promise(async (resolve, reject) => {
         const configFile = path.resolve(process.cwd(), POLY_CONFIG_FILE_NAME)
@@ -47,6 +49,7 @@ export class Config implements IConfig {
         }
 
         this._config = config;
+        this.projects = right(config.right.projects);
 
         resolve(CONFIG_MESSAGE.USING_CONFIG(configFile));
 
