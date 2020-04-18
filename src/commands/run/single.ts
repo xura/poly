@@ -1,3 +1,5 @@
+import "reflect-metadata"
+
 import { Command, flags } from '@oclif/command'
 import { Runner } from '../../services'
 

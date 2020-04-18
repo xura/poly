@@ -1,3 +1,5 @@
+import "reflect-metadata"
+
 import { Command, flags } from '@oclif/command'
 import { Runner } from '../../services'
 
@@ -23,6 +25,7 @@ export default class All extends Command {
     // c.useConfig().catch(e => log.error(e));
 
     const runner = new Runner();
+    runner.runAll();
 
     // const {args, flags} = this.parse(Hello)
     // this.log(`Does config exist? ${configFile} ${fs.existsSync(configFile)}`)

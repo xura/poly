@@ -16,7 +16,7 @@
                 "${workspaceFolder}/lib/**/*.js"
             ],
             "args": [
-                "run"
+                "run:all"
             ],
             "cwd": "${workspaceRoot}/test-project",
             "console": "integratedTerminal"

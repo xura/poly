@@ -19,7 +19,7 @@ $ npm install -g poly
 $ poly COMMAND
 running command...
 $ poly (-v|--version|version)
-poly/0.0.0 darwin-x64 node-v12.16.1
+poly/0.0.4 darwin-x64 node-v12.16.1
 $ poly --help [COMMAND]
 USAGE
   $ poly COMMAND
@@ -28,28 +28,9 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
-* [`poly hello [FILE]`](#poly-hello-file)
 * [`poly help [COMMAND]`](#poly-help-command)
-
-## `poly hello [FILE]`
-
-describe the command here
-
-```
-USAGE
-  $ poly hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
-
-EXAMPLE
-  $ poly hello
-  hello world from ./src/hello.ts!
-```
-
-_See code: [src/commands/hello.ts](https://github.com/xura/poly/blob/v0.0.0/src/commands/hello.ts)_
+* [`poly run:all`](#poly-runall)
+* [`poly run:single`](#poly-runsingle)
 
 ## `poly help [COMMAND]`
 
@@ -67,4 +48,32 @@ OPTIONS
 ```
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
+
+## `poly run:all`
+
+Run all projects
+
+```
+USAGE
+  $ poly run:all
+
+EXAMPLE
+  $ poly run:all
+```
+
+_See code: [src/commands/run/all.ts](https://github.com/xura/poly/blob/v0.0.4/src/commands/run/all.ts)_
+
+## `poly run:single`
+
+Run a single project
+
+```
+USAGE
+  $ poly run:single
+
+EXAMPLE
+  $ poly run:single
+```
+
+_See code: [src/commands/run/single.ts](https://github.com/xura/poly/blob/v0.0.4/src/commands/run/single.ts)_
 <!-- commandsstop -->

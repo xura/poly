@@ -1,6 +1,6 @@
 {
   "name": "poly",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "author": "Joe Badaczewski @joe307bad",
   "package": "CLI tool for managing polyrepos",
   "bin": {

@@ -15,7 +15,7 @@ type TDecoder<A> = (i: unknown) => Either<t.Errors, A>;
 
 export class Parser {
     static JSON = <T>(json: string, fileName: string, decoder: TDecoder<T>) =>
-        new Promise<Either<string, T>>((resolve, reject) => {
+        new Promise<Either<string, T>>(resolve => {
             try {
                 const parsed = JSON.parse(json);
                 pipe(
