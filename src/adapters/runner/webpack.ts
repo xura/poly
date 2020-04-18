@@ -13,8 +13,9 @@ export class Webpack implements IRunner {
 
     runAll = (): void => {
         exists(this._config)
-        if (isRight(this._config?.projects)) {
-            log.success(JSON.stringify(this._config?.projects.right))
+
+        if (isRight(this._config.projects)) {
+            log.success(JSON.stringify(this._config.projects.right))
         }
     }
 
