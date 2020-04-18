@@ -4,6 +4,7 @@ import { Parser as parse, Logger as log } from '../services';
 import * as t from 'io-ts';
 import { isLeft, Either, left } from 'fp-ts/lib/Either'
 import { IConfig } from '../interfaces';
+import { singleton } from 'tsyringe';
 const fsp = fs.promises;
 
 const RConfig = t.type({
@@ -22,6 +23,7 @@ const CONFIG_MESSAGE = {
 
 const POLY_CONFIG_FILE_NAME = 'poly-config.json';
 
+@singleton()
 export class Config implements IConfig {
 
     private _config: Either<undefined, TConfig> = left(undefined);
@@ -46,7 +48,7 @@ export class Config implements IConfig {
 
         this._config = config;
 
-        log.success(CONFIG_MESSAGE.USING_CONFIG(configFile));
+        resolve(CONFIG_MESSAGE.USING_CONFIG(configFile));
 
     })
 
