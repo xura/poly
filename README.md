@@ -19,7 +19,7 @@ $ npm install -g poly
 $ poly COMMAND
 running command...
 $ poly (-v|--version|version)
-poly/0.0.2 darwin-x64 node-v12.16.1
+poly/0.0.3 darwin-x64 node-v12.16.1
 $ poly --help [COMMAND]
 USAGE
   $ poly COMMAND
