@@ -1,6 +1,10 @@
 {
     "projects": [
-        "project1",
-        "project2"
+        {
+            "directory": "directory/for/project1"
+        },
+        {
+            "directory": "directory/for/project2"
+        }
     ]
 }

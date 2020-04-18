@@ -1,6 +1,7 @@
 import { container } from 'tsyringe'
 import { Hook } from '@oclif/config'
-import { Config, Webpack } from '../../adapters'
+import { Webpack } from '../../adapters'
+import { Config } from '../../core/config'
 
 export const inject = () => {
     container.registerSingleton('IConfig', Config);
