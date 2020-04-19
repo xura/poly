@@ -10,3 +10,4 @@
 - [ ] Add dependencies to single/all project(s)
 - [ ] Install all deps for all projects
 - [ ] pull down all projects (or "get" command that downloads a poly-config.json from a git repo and pull downs all projects)
+- [ ] bundle for production/bundle with sourcemaps 

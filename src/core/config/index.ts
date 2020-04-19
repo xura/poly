@@ -1,5 +1,5 @@
-import * as path from 'path'
-import * as fs from 'fs'
+import path from 'path'
+import fs from 'fs'
 import { Parser as parse } from '../../services';
 import { isLeft, Either, left, right, either } from 'fp-ts/lib/Either'
 import { IConfig } from '../../interfaces';
