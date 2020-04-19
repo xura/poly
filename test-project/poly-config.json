@@ -1,10 +1,18 @@
 {
     "projects": [
         {
-            "directory": "directory/for/project1"
+            "name": "project1",
+            "directory": "directory/for/project1",
+            "entry": "another-project.js",
+            "runner": "webpack",
+            "port": 3001
         },
         {
-            "directory": "directory/for/project2"
+            "name": "project2",
+            "directory": "directory/for/project2",
+            "entry": "index.js",
+            "runner": "webpack",
+            "port": 3002
         }
     ]
 }

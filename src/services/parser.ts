@@ -1,4 +1,4 @@
-import * as t from 'io-ts';
+import t from 'io-ts';
 import { failure } from 'io-ts/lib/PathReporter';
 import { pipe } from 'fp-ts/lib/pipeable'
 import { Either, fold, left, right } from 'fp-ts/lib/Either'
