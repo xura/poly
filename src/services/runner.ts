@@ -3,13 +3,13 @@ import { inject, autoInjectable } from 'tsyringe';
 import { Logger as log } from '../services/logger';
 import { exists } from '../shared/assertions';
 
-
-
 @autoInjectable()
 export class Runner implements IRunner {
 
     private _useConfig = (method: () => void) => {
-        this._config?.useConfig()
+        exists(this._config);
+
+        this._config.useConfig()
             .then(success => {
                 log.success(success);
                 method();

@@ -8,4 +8,8 @@ export class Logger {
     static success(message: string) {
         console.log(chalk.green(message));
     }
+
+    static warn(message: string) {
+        console.log(chalk.yellow(message));
+    }
 }

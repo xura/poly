@@ -39,7 +39,8 @@ export const RProject = t.type({
     directory: RExistentDirectory,
     runner: RRunner,
     port: t.number,
-    entry: t.string
+    entry: t.string,
+    name: t.string
 });
 
 export type TProject = t.TypeOf<typeof RProject>;
