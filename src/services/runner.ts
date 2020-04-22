@@ -2,19 +2,19 @@ import { IConfig, IRunner } from '../interfaces';
 import { inject, autoInjectable } from 'tsyringe';
 import { Logger as log } from '../services/logger';
 import { exists } from '../shared/assertions';
+import { Either } from 'fp-ts/lib/Either';
 
 @autoInjectable()
 export class Runner implements IRunner {
 
-    private _useConfig = (method: () => void) => {
+    private _useConfig = (method: () => Promise<Either<string, null>>) => {
         exists(this._config);
 
-        this._config.useConfig()
+        return this._config.useConfig()
             .then(success => {
                 log.success(success);
-                method();
-            })
-            .catch(e => log.error(e));
+                return method();
+            });
     }
 
     constructor(
@@ -22,13 +22,13 @@ export class Runner implements IRunner {
         @inject('IRunner') private _runner?: IRunner
     ) { }
 
-    runAll(): void {
+    runAll(): Promise<Either<string, null>> {
         exists(this._runner);
-        this._useConfig(this._runner?.runAll);
+        return this._useConfig(this._runner.runAll);
     }
 
-    runSingle(): void {
+    runSingle(): Promise<Either<string, null>> {
         exists(this._runner);
-        this._useConfig(this._runner?.runSingle);
+        return this._useConfig(this._runner.runSingle);
     }
 }

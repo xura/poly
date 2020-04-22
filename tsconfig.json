@@ -8,7 +8,10 @@
     "strict": true,
     "target": "es2017",
     "experimentalDecorators": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "typeRoots": [
+      "types"
+    ]
   },
   "include": [
     "src/**/*"
