@@ -7,7 +7,7 @@
         {
             "type": "node",
             "request": "launch",
-            "name": "Launch Program",
+            "name": "poly run:all",
             "skipFiles": [
                 "<node_internals>/**"
             ],
@@ -19,6 +19,23 @@
                 "run:all"
             ],
             "cwd": "${workspaceRoot}/test-project",
+            "console": "integratedTerminal"
+        },
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "poly push:all",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "program": "${workspaceFolder}/bin/run",
+            "outFiles": [
+                "${workspaceFolder}/lib/**/*.js"
+            ],
+            "args": [
+                "push:all"
+            ],
+            "cwd": "/Users/jbadaczewski/dev/xura/bridge/",
             "console": "integratedTerminal"
         }
     ]

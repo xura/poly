@@ -1,9 +1,14 @@
 - [X] validate poly-config.json file (eg. show an error "project2 is missing repo location") with io-ts
-- [ ] Run multiple projects and show error when one fails to build
+- [X] Run multiple projects and show error when one fails to build
+- [ ] Ability to push all projects to repos (checking in can be done from vsacode for now)
+- [ ] Implement complex webpack logic that already exists in bridge project
+- [ ] How do we run backend projects? Probably need to add an arg for `run:all --runner=webpack`
+- [ ] Show what port each project is running oon in the terminal list
+- [ ] Some system for centralized dependency management that stores the deps in the poly-config.js, but compares those deps when building for production and raises flags saying "you have updated a shared dep, is this something you want to do?" And this would also go for versions of "main" projects. Like "data@v2 depends on components@v3, but data@v2 does not have this version, please fix"
+- [ ] Ability to push a single project
 - [ ] Run all projects excluding one
 - [ ] Run a single project
 - [ ] run prettier and eslint on all projects (detect if there is project specific config for prettier/eslint) and automatically checkin the changes
-- [ ] Ability to push all projects to repos (checking in can be done from vsacode for now)
 - [ ] Ability to tag all projects (as on version or as multiple versions)
 - [ ] Run e2e tests for entire project
 - [ ] Wizard for adding a project
@@ -11,3 +16,4 @@
 - [ ] Install all deps for all projects
 - [ ] pull down all projects (or "get" command that downloads a poly-config.json from a git repo and pull downs all projects)
 - [ ] bundle for production/bundle with sourcemaps 
+- [ ] automatice dep updating https://renovate.whitesourcesoftware.com/

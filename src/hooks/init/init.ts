@@ -1,6 +1,6 @@
 import { container } from 'tsyringe'
 import { Hook } from '@oclif/config'
-import { Webpack, ObservableProcess, Spinnies } from '../../adapters'
+import { Webpack, ObservableProcess, Spinnies, Git } from '../../adapters'
 import { Config } from '../../core/config'
 
 export const inject = () => {
@@ -8,6 +8,7 @@ export const inject = () => {
     container.registerSingleton('ITerminalList', Spinnies);
     container.register('IRunner', Webpack);
     container.register('IProcess', ObservableProcess);
+    container.register('ISourceControl', Git);
 }
 
 const hook: Hook<'init'> = function () {

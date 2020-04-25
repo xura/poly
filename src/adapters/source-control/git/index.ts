@@ -1,17 +1,19 @@
-import { IRunner, IConfig, IProcess, ITerminalList, ProjectStatusDefintion, ITEM_STATE } from '../../../interfaces';
 import { injectable, inject } from 'tsyringe';
 import { right, Either, left } from 'fp-ts/lib/Either';
-import { Option, some, none, isNone, option } from 'fp-ts/lib/Option';
-import { exists } from '../../../shared/assertions';
-import { cwd, dir } from '../../../shared/fs';
+import { isNone, option } from 'fp-ts/lib/Option';
 import { sequenceT } from 'fp-ts/lib/Apply'
 
-const WEBPACK_RUNNER_ERRORS = {
+import { exists, cwd, dir } from '../../../shared';
+import { IConfig, IProcess, ITerminalList, ITEM_STATE, ISourceControl } from '../../../interfaces';
+import { getProjectStateDefinitions } from '../../terminal-list/helpers/project-state-definitions';
+
+
+const GIT_ERRORS = {
     ERROR_COLLECTING_PROJECT_DATA: "There was an error collecting the project data"
 }
 
 @injectable()
-export class Webpack implements IRunner {
+export class Git implements ISourceControl {
 
     constructor(
         @inject('IConfig') private _config?: IConfig,
@@ -19,41 +21,28 @@ export class Webpack implements IRunner {
         @inject('ITerminalList') private _terminalList?: ITerminalList
     ) { }
 
-    _getProjectStateDefinitions = (): Option<ProjectStatusDefintion[]> => {
-        exists(this._config)
-
-        if (isNone(this._config.projects))
-            return none;
-
-        return some(this._config.projects.value.map(project => ([
-            project.name,
-            right(ITEM_STATE.PENDING)
-        ])));
-    }
-
-    runAll = (): Promise<Either<string, null>> => {
+    pushAll = (): Promise<Either<string, null>> => {
         exists(this._config)
         exists(this._process)
         exists(this._terminalList)
 
         const dependents = sequenceT(option)(
             this._config.projects,
-            this._getProjectStateDefinitions(),
+            getProjectStateDefinitions(this._config.projects)
         );
 
         if (isNone(dependents))
-            return Promise.reject(left(WEBPACK_RUNNER_ERRORS.ERROR_COLLECTING_PROJECT_DATA));
+            return Promise.reject(left(GIT_ERRORS.ERROR_COLLECTING_PROJECT_DATA));
 
         const [projects, projectStateDefinitions] = dependents.value;
-        const drawList = this._terminalList.drawList("Running all projects")
+        const drawList = this._terminalList.drawList("Pushing all files from the following repos")
 
         drawList(projectStateDefinitions);
 
         this._process.start(projects.map(project => {
-            const entry = `${cwd(project.directory)}/${project.entry}`;
-            const webpackCommand = dir(__dirname, "commands/webpack.ts")
+            const gitPushCommand = dir(__dirname, "commands/git-push.ts")
             return [
-                project.name, `ts-node ${webpackCommand} ${entry}`
+                project.name, `ts-node ${gitPushCommand} ${cwd(project.directory)}`
             ]
         })).subscribe(data => {
             exists(this._terminalList)

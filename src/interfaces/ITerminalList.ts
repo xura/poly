@@ -8,5 +8,5 @@ export enum ITEM_STATE {
 export type ProjectStatusDefintion = [string, Either<string, ITEM_STATE>];
 
 export interface ITerminalList {
-    drawList(definitions: ProjectStatusDefintion[]): void;
+    drawList: (title: string) => (definitions: ProjectStatusDefintion[]) => void;
 }
