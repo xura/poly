@@ -2,6 +2,7 @@ import * as t from 'io-ts';
 import fs from 'fs';
 import path from 'path';
 import { either } from 'fp-ts/lib/Either';
+import { option } from 'io-ts-types/lib/option'
 
 const resolve = (d: string) => path.resolve(process.cwd(), d);
 
@@ -39,8 +40,9 @@ export const RProject = t.type({
     directory: RExistentDirectory,
     runner: RRunner,
     port: t.number,
-    entry: t.string,
-    name: t.string
+    entry: t.union([t.string, t.undefined]),
+    name: t.string,
+    command: t.union([t.string, t.undefined])
 });
 
 export type TProject = t.TypeOf<typeof RProject>;
