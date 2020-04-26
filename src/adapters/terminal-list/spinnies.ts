@@ -1,7 +1,8 @@
 import { ITerminalList, ProjectStatusDefintion, ITEM_STATE } from '../../interfaces';
 import spinnies from 'spinnies';
-import { Either, isLeft } from 'fp-ts/lib/Either';
+import { isLeft } from 'fp-ts/lib/Either';
 import { singleton } from 'tsyringe';
+import { Logger as log } from '../../services';
 
 export enum STATUS {
     SUCCEED = 'succeed',
@@ -14,7 +15,7 @@ export class Spinnies implements ITerminalList {
 
     private _spinner = { interval: 150, frames: ['🍇', '🍈', '🍉', '🍋'] }
     private _spinnies = new spinnies({
-        color: 'blue',
+        color: 'white',
         succeedColor: 'green',
         spinner: this._spinner
     });
@@ -34,8 +35,10 @@ export class Spinnies implements ITerminalList {
         }
     }
 
-    drawList(definitions: ProjectStatusDefintion[]): void {
+    drawList = (title: string) => (definitions: ProjectStatusDefintion[]): void => {
+        this._spinnies.stopAll(STATUS.FAIL);
         console.clear();
+        log.success(title);
         definitions.forEach(definition => {
             const status = this._getState(definition);
             try {

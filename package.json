@@ -31,13 +31,16 @@
     "globby": "^10",
     "io-ts": "^2.2.0",
     "io-ts-reporters": "^1.0.0",
+    "io-ts-types": "^0.5.6",
     "listr": "^0.14.3",
     "mocha": "^5",
+    "monocle-ts": "^2.1.0",
     "nyc": "^14",
     "observable-process": "^7.0.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.5",
     "shelljs": "^0.8.3",
+    "simple-git": "^1.132.0",
     "spinnies": "^0.5.1",
     "ts-node": "^8",
     "tsyringe": "^4.1.0",
@@ -71,6 +74,9 @@
     "topics": {
       "run": {
         "description": "Run project(s)"
+      },
+      "push": {
+        "description": "[Source Control] push project(s)"
       }
     }
   },
