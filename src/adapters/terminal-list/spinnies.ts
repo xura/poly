@@ -15,7 +15,7 @@ export class Spinnies implements ITerminalList {
 
     private _spinner = { interval: 150, frames: ['🍇', '🍈', '🍉', '🍋'] }
     private _spinnies = new spinnies({
-        color: 'blue',
+        color: 'white',
         succeedColor: 'green',
         spinner: this._spinner
     });
@@ -36,6 +36,7 @@ export class Spinnies implements ITerminalList {
     }
 
     drawList = (title: string) => (definitions: ProjectStatusDefintion[]): void => {
+        this._spinnies.stopAll(STATUS.FAIL);
         console.clear();
         log.success(title);
         definitions.forEach(definition => {

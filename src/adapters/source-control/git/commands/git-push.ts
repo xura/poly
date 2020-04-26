@@ -1,6 +1,18 @@
 import gitP, { SimpleGit } from 'simple-git/promise';
+import { promises } from 'fs';
 
-const git: SimpleGit = gitP(process.argv[2]);
-git.push()
-    .then(_ => console.log(JSON.stringify(null)))
-    .catch(error => console.log(JSON.stringify(["error", error])));
+const wd = process.argv[2];
+
+promises.stat(`${wd}/.git`)
+    .then(_ => {
+        const git: SimpleGit = gitP(wd);
+        try {
+            git.push().catch(error => console.log(JSON.stringify(["error", error])));
+            console.log(JSON.stringify(null));
+        } catch (e) {
+            console.log(e.toString())
+        }
+    })
+    .catch(_ => {
+        console.log(JSON.stringify([`The following directory is not a git repository:\n${wd}/.git`]))
+    });

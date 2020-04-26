@@ -72,6 +72,9 @@
     "topics": {
       "run": {
         "description": "Run project(s)"
+      },
+      "push": {
+        "description": "[Source Control] push project(s)"
       }
     }
   },
