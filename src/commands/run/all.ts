@@ -10,5 +10,5 @@ export default class All extends Command {
     `$ poly run:all`,
   ]
 
-  run = () => new Runner().runAll().catch(e => log.error(e));
+  run = () => new Runner().runAll().catch(e => log.error(e.left));
 }

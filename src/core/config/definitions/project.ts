@@ -37,9 +37,8 @@ export enum Runner {
 const RRunner = fromEnum<Runner>("Runner", Runner);
 
 export const RProject = t.type({
-    directory: RExistentDirectory,
+    directory: t.union([t.undefined, RExistentDirectory]),
     runner: RRunner,
-    port: t.number,
     entry: t.union([t.string, t.undefined]),
     name: t.string,
     command: t.union([t.string, t.undefined])

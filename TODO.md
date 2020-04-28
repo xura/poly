@@ -2,8 +2,9 @@
 - [X] Run multiple projects and show error when one fails to build
 - [X] Ability to push all projects to repos (checking in can be done from vsacode for now)
 - [X] Show port number when project is running
-- [ ] Show detailed error message with line number
+- [X] Show detailed error message with line number
 - [ ] How do we run backend projects? Probably need to add an arg for `run:all --runner=webpack`
+- [ ] validation for project.directory (dont need if we are specifying a command)
 - [ ] Some system for centralized dependency management that stores the deps in the poly-config.js, but compares those deps when building for production and raises flags saying "you have updated a shared dep, is this something you want to do?" And this would also go for versions of "main" projects. Like "data@v2 depends on components@v3, but data@v2 does not have this version, please fix"
 - [ ] Ability to push a single project
 - [ ] Run all projects excluding one
