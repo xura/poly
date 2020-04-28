@@ -1,13 +1,30 @@
-import { IRunner, IConfig, IProcess, ITerminalList, ProjectStatusDefintion, ITEM_STATE } from '../../../interfaces';
 import { injectable, inject } from 'tsyringe';
 import { right, Either, left } from 'fp-ts/lib/Either';
-import { Option, some, none, isNone, option, isSome } from 'fp-ts/lib/Option';
+import { sequenceT } from 'fp-ts/lib/Apply'
+import { isNone, option } from 'fp-ts/lib/Option';
+
 import { exists } from '../../../shared/assertions';
 import { cwd, dir } from '../../../shared/fs';
-import { sequenceT } from 'fp-ts/lib/Apply'
+import { IRunner, IConfig, IProcess, ITerminalList, ITEM_STATE } from '../../../interfaces';
+import { getProjectStateDefinitions } from '../../terminal-list/helpers';
 
 const WEBPACK_RUNNER_ERRORS = {
     ERROR_COLLECTING_PROJECT_DATA: "There was an error collecting the project data"
+}
+
+const WEBPACK_MESSAGES = {
+    LIST_TITLE: "Running all projects",
+    PENDING: "Compiling...",
+    SUCCESS: (port?: number) => `Running on port ${port}`,
+    FAILED: "Failed compilation"
+}
+
+const WEBPACK_CONDITIONS = {
+    IS_SUCCESSFULL: (output: string) => [
+        output === 'null',
+        output.search('Compiled') > 0,
+        output.search('running') > 0
+    ].some(condition => condition === true)
 }
 
 @injectable()
@@ -19,18 +36,6 @@ export class Webpack implements IRunner {
         @inject('ITerminalList') private _terminalList?: ITerminalList
     ) { }
 
-    _getProjectStateDefinitions = (): Option<ProjectStatusDefintion[]> => {
-        exists(this._config)
-
-        if (isNone(this._config.projects))
-            return none;
-
-        return some(this._config.projects.value.map(project => ([
-            project.name,
-            right(ITEM_STATE.PENDING)
-        ])));
-    }
-
     runAll = (): Promise<Either<string, null>> => {
         exists(this._config)
         exists(this._process)
@@ -38,14 +43,14 @@ export class Webpack implements IRunner {
 
         const dependents = sequenceT(option)(
             this._config.projects,
-            this._getProjectStateDefinitions(),
+            getProjectStateDefinitions(this._config.projects, WEBPACK_MESSAGES.PENDING),
         );
 
         if (isNone(dependents))
             return Promise.reject(left(WEBPACK_RUNNER_ERRORS.ERROR_COLLECTING_PROJECT_DATA));
 
         const [projects, projectStateDefinitions] = dependents.value;
-        const drawList = this._terminalList.drawList("Running all projects")
+        const drawList = this._terminalList.drawList(WEBPACK_MESSAGES.LIST_TITLE)
 
         drawList(projectStateDefinitions);
 
@@ -59,15 +64,19 @@ export class Webpack implements IRunner {
                 }
             })();
             return [project.name, `ts-node ${command}`];
-        })).subscribe(data =>
+        }), "ERROR").subscribe(data =>
             drawList(projectStateDefinitions.map(project => {
-                if (project[0] === data[0]) {
-                    if (data[1] === "null" || data[1].search("Compiled") > 0) {
+                if (data[1] && project[0] === data[0]) {
+                    const port = projects.find(p => p.name === project[0])?.port;
+                    if (WEBPACK_CONDITIONS.IS_SUCCESSFULL(data[1])) {
                         project[1] = right(ITEM_STATE.SUCCESS)
+                        project[2] = WEBPACK_MESSAGES.SUCCESS(port)
                     } else if (data[1].search("Compiling") > 0) {
                         project[1] = right(ITEM_STATE.PENDING)
+                        project[2] = WEBPACK_MESSAGES.PENDING
                     } else {
                         project[1] = left(data[1])
+                        project[2] = WEBPACK_MESSAGES.FAILED
                     }
                 }
                 return project;

@@ -43,12 +43,12 @@ export class Spinnies implements ITerminalList {
             const status = this._getState(definition);
             try {
                 this._spinnies.update(definition[0], {
-                    text: status[1],
+                    text: `${status[1]} -- ${definition[2]}`,
                     status: status[0]
                 })
             } catch (e) {
                 this._spinnies.add(definition[0], {
-                    text: status[1],
+                    text: `${status[1]} -- ${definition[2]}`,
                     status: status[0]
                 })
             }

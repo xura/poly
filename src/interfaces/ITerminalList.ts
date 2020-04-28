@@ -5,7 +5,8 @@ export enum ITEM_STATE {
     PENDING = 'pending'
 }
 
-export type ProjectStatusDefintion = [string, Either<string, ITEM_STATE>];
+// [project name, error message or ITEM_STATE, message]
+export type ProjectStatusDefintion = [string, Either<string, ITEM_STATE>, string];
 
 export interface ITerminalList {
     drawList: (title: string) => (definitions: ProjectStatusDefintion[]) => void;
