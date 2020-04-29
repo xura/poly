@@ -22,7 +22,11 @@ export class Spinnies implements ITerminalList {
 
     private _getState = (definition: ProjectStatusDefintion): [STATUS, string] => {
         if (isLeft(definition[1])) {
-            return [STATUS.FAIL, `${definition[0]}\n${definition[1].left}`];
+            try {
+                return [STATUS.FAIL, `${definition[0]}\n${JSON.parse(definition[1].left)[0]}`];
+            } catch (e) {
+                return [STATUS.FAIL, `${definition[0]}\n${definition[1].left}`];
+            }
         } else {
             switch (definition[1].right) {
                 case ITEM_STATE.PENDING:
@@ -43,12 +47,12 @@ export class Spinnies implements ITerminalList {
             const status = this._getState(definition);
             try {
                 this._spinnies.update(definition[0], {
-                    text: status[1],
+                    text: `${status[1]} -- ${definition[2]}`,
                     status: status[0]
                 })
             } catch (e) {
                 this._spinnies.add(definition[0], {
-                    text: status[1],
+                    text: `${status[1]} ${definition[2]}`,
                     status: status[0]
                 })
             }

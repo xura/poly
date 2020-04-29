@@ -5,11 +5,16 @@ import { sequenceT } from 'fp-ts/lib/Apply'
 
 import { exists, cwd, dir } from '../../../shared';
 import { IConfig, IProcess, ITerminalList, ITEM_STATE, ISourceControl } from '../../../interfaces';
-import { getProjectStateDefinitions } from '../../terminal-list/helpers/project-state-definitions';
-
+import { getProjectStateDefinitions } from '../../terminal-list/helpers';
 
 const GIT_ERRORS = {
     ERROR_COLLECTING_PROJECT_DATA: "There was an error collecting the project data"
+}
+
+const GIT_MESSAGES = {
+    LIST_TITLE: "Pushing all files from the following repos",
+    PENDING: "Pushing files...",
+    FAILED: "Failed pushing files"
 }
 
 @injectable()
@@ -28,36 +33,36 @@ export class Git implements ISourceControl {
 
         const dependents = sequenceT(option)(
             this._config.projects,
-            getProjectStateDefinitions(this._config.projects)
+            getProjectStateDefinitions(this._config.projects, GIT_MESSAGES.PENDING)
         );
 
         if (isNone(dependents))
             return Promise.reject(left(GIT_ERRORS.ERROR_COLLECTING_PROJECT_DATA));
 
         const [projects, projectStateDefinitions] = dependents.value;
-        const drawList = this._terminalList.drawList("Pushing all files from the following repos")
+        const drawList = this._terminalList.drawList(GIT_MESSAGES.LIST_TITLE)
 
         drawList(projectStateDefinitions);
 
         this._process.start(projects.map(project => {
             const gitPushCommand = dir(__dirname, "commands/git-push.ts")
             return [
-                project.name, `ts-node ${gitPushCommand} ${cwd(project.directory)}`
+                project.name,
+                `ts-node ${gitPushCommand} ${cwd(project.directory)}`
             ]
-        })).subscribe(data => {
-            exists(this._terminalList)
-
-            drawList(projectStateDefinitions.map(project => {
-                if (project[0] === data[0]) {
+        })).subscribe(data =>
+            drawList(projectStateDefinitions.map(definition => {
+                if (definition[0] === data[0]) {
                     if (data[1] === "null") {
-                        project[1] = right(ITEM_STATE.SUCCESS)
+                        definition[1] = right(ITEM_STATE.SUCCESS)
+                        definition[2] = ""
                     } else {
-                        project[1] = left(data[1])
+                        definition[1] = left(data[1])
+                        definition[2] = GIT_MESSAGES.FAILED
                     }
                 }
-                return project;
-            }));
-        })
+                return definition;
+            })))
 
         return Promise.resolve(right(null));
     }
