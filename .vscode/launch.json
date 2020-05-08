@@ -16,7 +16,8 @@
                 "${workspaceFolder}/lib/**/*.js"
             ],
             "args": [
-                "run:all"
+                "run:all",
+                "--runner=backend"
             ],
             "cwd": "/Users/jbadaczewski/dev/xura/bridge/",
             "console": "integratedTerminal"

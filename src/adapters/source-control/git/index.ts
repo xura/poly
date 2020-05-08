@@ -48,7 +48,7 @@ export class Git implements ISourceControl {
             const gitPushCommand = dir(__dirname, "commands/git-push.ts")
             return [
                 project.name,
-                `ts-node ${gitPushCommand} ${cwd(project.directory)}`
+                `ts-node ${gitPushCommand} ${cwd(project.directory || '')}`
             ]
         })).subscribe(data =>
             drawList(projectStateDefinitions.map(definition => {

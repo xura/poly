@@ -1,4 +1,4 @@
-import { injectable, inject } from 'tsyringe';
+import { injectable, inject, autoInjectable } from 'tsyringe';
 import { right, Either, left } from 'fp-ts/lib/Either';
 import { sequenceT } from 'fp-ts/lib/Apply'
 import { isNone, option } from 'fp-ts/lib/Option';
@@ -29,7 +29,7 @@ const WEBPACK_CONDITIONS = {
     ].some(condition => condition === true)
 }
 
-@injectable()
+@autoInjectable()
 export class Webpack implements IRunner {
 
     constructor(
