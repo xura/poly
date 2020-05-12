@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 
 import Application from './components/Application';
 import store from './store';
-import './Reason';
+import { entry } from './Reason';
 
 // Create main element
 const mainElement = document.createElement('div');
@@ -16,6 +16,7 @@ const render = (Component: () => JSX.Element) => {
     ReactDOM.render(
         <AppContainer>
             <Provider store={store}>
+                {entry()}
                 <Component />
             </Provider>
         </AppContainer>,
