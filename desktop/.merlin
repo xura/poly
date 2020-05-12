@@ -1,0 +1,18 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx '/Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/darwin/bsc.exe -as-ppx -bs-jsx 3'
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/lib/ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-react/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-react/lib/ocaml
+S reason
+B lib/bs/reason
+S reason/FetchedDogPictures
+B lib/bs/reason/FetchedDogPictures
+S reason/BlinkingGreeting
+B lib/bs/reason/BlinkingGreeting
+S reason/ReasonUsingJSUsingReason
+B lib/bs/reason/ReasonUsingJSUsingReason
+S reason/ReducerFromReactJSDocs
+B lib/bs/reason/ReducerFromReactJSDocs
+####BSB GENERATED: NO EDIT}
