@@ -8,8 +8,15 @@
     ],
     "sources": [
         {
-            "dir": "src",
-            "subdirs": true
+            "dir": "reason",
+            "subdirs": [
+                {
+                    "dir": "page"
+                },
+                {
+                    "dir": "shared"
+                }
+            ]
         }
     ],
     "package-specs": [

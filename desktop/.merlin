@@ -1,12 +1,14 @@
 ####{BSB GENERATED: NO EDIT
-FLG -ppx '/Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/darwin/bsc.exe -as-ppx -bs-jsx 3'
+FLG -ppx '/Users/joe307bad/.config/yarn/global/node_modules/bs-platform/darwin/bsc.exe -as-ppx -bs-jsx 3'
 S /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/lib/ocaml
 B /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/lib/ocaml
 FLG -w +a-4-9-20-40-41-42-50-61-102
 S /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-react/lib/ocaml
 B /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-react/lib/ocaml
-S src
-B lib/bs/src
-S src/Page
-B lib/bs/src/Page
+S reason
+B lib/bs/reason
+S reason/shared
+B lib/bs/reason/shared
+S reason/page
+B lib/bs/reason/page
 ####BSB GENERATED: NO EDIT}

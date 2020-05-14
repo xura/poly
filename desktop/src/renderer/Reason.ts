@@ -1,1 +1,1 @@
-export * from '../../reason/lib/es6/src/Index';
+export * from '../../lib/es6/reason';
