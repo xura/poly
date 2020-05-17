@@ -7,7 +7,10 @@
         "reason-react",
         "@jsiebern/bs-material-ui",
         "@mscharley/bs-material-ui-icons",
-        "re-classnames"
+        "re-classnames",
+        "@ambientlight/bs-rx",
+        "reason-promise",
+        "bs-fetch"
     ],
     "sources": [
         {
