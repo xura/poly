@@ -4,7 +4,10 @@
         "react-jsx": 3
     },
     "bs-dependencies": [
-        "reason-react"
+        "reason-react",
+        "@jsiebern/bs-material-ui",
+        "@mscharley/bs-material-ui-icons",
+        "re-classnames"
     ],
     "sources": [
         {
