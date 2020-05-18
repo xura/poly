@@ -140,6 +140,7 @@
     "react-test-renderer": "^16.8.6",
     "reason-promise": "^1.0.2",
     "redux-devtools-extension": "^2.13.5",
+    "rxjs": "^6.5.5",
     "sass-loader": "^7.1.0",
     "source-map-loader": "^0.2.4",
     "spectron": "^5.0.0",

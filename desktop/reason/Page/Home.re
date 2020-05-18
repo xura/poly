@@ -1,15 +1,15 @@
 [@bs.val] external alert: string => unit = "alert";
-[@bs.module "../../../../src/renderer/lib"]
-external lib: string => unit = "default";
 
 open MscharleyBsMaterialUiIcons;
 open MaterialUi;
+open Emporium;
 
 let count = Rx.interval(~period=500, ());
 
 [@react.component]
 let make = () => {
   let (number, setNumber) = React.useState(() => 0);
+  let (message, setMessage) = React.useState(() => "");
 
   React.useLayoutEffect0(() => {
     count
@@ -17,12 +17,20 @@ let make = () => {
          ~next=x => setNumber(_ => x),
          ~error=ignore,
          ~complete=ignore,
-       );
+       )
+    |> ignore;
+    exampleMessage()
+    |> Rx.Observable.subscribe(
+         ~next=x => setMessage(_ => x),
+         ~error=ignore,
+         ~complete=ignore,
+       )
+    |> ignore;
     None;
   });
 
   <MaterialUi.List style={ReactDOMRe.Style.make(~backgroundColor="#fff", ())}>
-    <ListItem button=true onClick={_event => lib("")}>
+    <ListItem button=true onClick={_event => alertDoesThisWork("")}>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
       <ListItemText> {"Data" |> React.string} </ListItemText>
     </ListItem>
@@ -32,7 +40,7 @@ let make = () => {
     </ListItem>
     <ListItem button=true>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
-      <ListItemText> {"Emporium" |> React.string} </ListItemText>
+      <ListItemText> {message |> React.string} </ListItemText>
     </ListItem>
   </MaterialUi.List>;
 };
