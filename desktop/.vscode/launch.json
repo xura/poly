@@ -9,6 +9,34 @@
             "request": "launch",
             "name": "Launch Program",
             "program": "${workspaceFolder}/dist/main.js"
+        },
+        {
+            "name": "webpack-watch",
+            "type": "node",
+            "request": "launch",
+            "args": [
+                "${workspaceRoot}/src/renderer/commands/webpack-watch.ts"
+            ],
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
+        },
+        {
+            "name": "poly-test",
+            "type": "node",
+            "request": "launch",
+            "args": [
+                "${workspaceRoot}/src/renderer/poly.ts"
+            ],
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
         }
     ]
 }
