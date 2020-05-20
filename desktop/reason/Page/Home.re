@@ -2,26 +2,23 @@
 
 open MscharleyBsMaterialUiIcons;
 open MaterialUi;
-open Emporium;
+open Poly;
 
 let count = Rx.interval(~period=500, ());
+let {changes, start, stop} = poly;
 
 [@react.component]
 let make = () => {
-  let (number, setNumber) = React.useState(() => 0);
   let (message, setMessage) = React.useState(() => "");
 
   React.useLayoutEffect0(() => {
-    count
+    changes
     |> Rx.Observable.subscribe(
-         ~next=x => setNumber(_ => x),
-         ~error=ignore,
-         ~complete=ignore,
-       )
-    |> ignore;
-    exampleMessage()
-    |> Rx.Observable.subscribe(
-         ~next=x => setMessage(_ => x),
+         ~next=
+           x => {
+             let (_project, message) = x;
+             setMessage(_ => message);
+           },
          ~error=ignore,
          ~complete=ignore,
        )
@@ -30,13 +27,13 @@ let make = () => {
   });
 
   <MaterialUi.List style={ReactDOMRe.Style.make(~backgroundColor="#fff", ())}>
-    <ListItem button=true onClick={_event => alertDoesThisWork("")}>
+    <ListItem button=true onClick={_event => start()}>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
       <ListItemText> {"Data" |> React.string} </ListItemText>
     </ListItem>
-    <ListItem button=true>
+    <ListItem button=true onClick={_event => stop()}>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
-      <ListItemText> {string_of_int(number) |> React.string} </ListItemText>
+      <ListItemText> {message |> React.string} </ListItemText>
     </ListItem>
     <ListItem button=true>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>

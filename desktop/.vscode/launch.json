@@ -37,6 +37,20 @@
             ],
             "cwd": "${workspaceRoot}",
             "protocol": "inspector"
+        },
+        {
+            "name": "o-test",
+            "type": "node",
+            "request": "launch",
+            "args": [
+                "${workspaceRoot}/src/renderer/observable-test.ts"
+            ],
+            "runtimeArgs": [
+                "-r",
+                "ts-node/register"
+            ],
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector"
         }
     ]
 }

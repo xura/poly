@@ -1,10 +1,11 @@
 import { Observable, of, merge, concat } from 'rxjs';
-import { createObservableProcess } from 'observable-process';
+import { createObservableProcess, ObservableProcess } from 'observable-process';
 
 export const start =
-    (definitions: [string, string][]): any => {
+    (definitions: [string, string][], processes: ObservableProcess[]): any => {
         return definitions.reduce((acc, definition) => {
             const process = createObservableProcess(definition[1]);
+            processes.push(process);
             const processObservable = new Observable<[string, string]>(observer => {
                 process.stdout.on("data", function () {
                     const output = process.stdout.fullText().split("\n");
