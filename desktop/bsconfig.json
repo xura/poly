@@ -1,0 +1,33 @@
+{
+    "name": "desktop",
+    "reason": {
+        "react-jsx": 3
+    },
+    "bs-dependencies": [
+        "reason-react",
+        "@jsiebern/bs-material-ui",
+        "@mscharley/bs-material-ui-icons",
+        "re-classnames",
+        "@ambientlight/bs-rx",
+        "reason-promise",
+        "bs-fetch"
+    ],
+    "sources": [
+        {
+            "dir": "reason",
+            "subdirs": [
+                {
+                    "dir": "page"
+                },
+                {
+                    "dir": "shared"
+                }
+            ]
+        }
+    ],
+    "package-specs": [
+        {
+            "module": "es6"
+        }
+    ]
+}

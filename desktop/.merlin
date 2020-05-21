@@ -1,0 +1,26 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx '/Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/darwin/bsc.exe -as-ppx -bs-jsx 3'
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-platform/lib/ocaml
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-react/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-react/lib/ocaml
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/@jsiebern/bs-material-ui/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/@jsiebern/bs-material-ui/lib/ocaml
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/@mscharley/bs-material-ui-icons/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/@mscharley/bs-material-ui-icons/lib/ocaml
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/re-classnames/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/re-classnames/lib/ocaml
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/@ambientlight/bs-rx/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/@ambientlight/bs-rx/lib/ocaml
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-promise/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/reason-promise/lib/ocaml
+S /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-fetch/lib/ocaml
+B /Users/joe307bad/Source/xura/poly/desktop/node_modules/bs-fetch/lib/ocaml
+S reason
+B lib/bs/reason
+S reason/shared
+B lib/bs/reason/shared
+S reason/page
+B lib/bs/reason/page
+####BSB GENERATED: NO EDIT}

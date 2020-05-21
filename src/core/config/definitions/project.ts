@@ -31,7 +31,8 @@ export function fromEnum<EnumType>(enumName: string, theEnum: Record<string, str
 }
 
 export enum Runner {
-    WEBPACK = "webpack"
+    WEBPACK = "webpack",
+    BACKEND = "backend"
 }
 
 const RRunner = fromEnum<Runner>("Runner", Runner);

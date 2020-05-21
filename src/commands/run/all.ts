@@ -1,6 +1,6 @@
 import "reflect-metadata"
 
-import { Command } from '@oclif/command'
+import { Command, flags } from '@oclif/command'
 import { Runner, Logger as log } from '../../services'
 
 export default class All extends Command {
@@ -10,5 +10,11 @@ export default class All extends Command {
     `$ poly run:all`,
   ]
 
-  run = () => new Runner().runAll().catch(e => log.error(e.left));
+  static flags = {
+    runner: flags.string({ char: 'r' }),
+  }
+
+  run = () => new Runner().runAll().catch(e => {
+    log.error(e.left)
+  });
 }

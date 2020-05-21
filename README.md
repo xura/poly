@@ -29,8 +29,8 @@ USAGE
 # Commands
 <!-- commands -->
 * [`poly help [COMMAND]`](#poly-help-command)
+* [`poly push:all`](#poly-pushall)
 * [`poly run:all`](#poly-runall)
-* [`poly run:single`](#poly-runsingle)
 
 ## `poly help [COMMAND]`
 
@@ -49,6 +49,20 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v2.2.3/src/commands/help.ts)_
 
+## `poly push:all`
+
+For each project, push all commits to the currently checked out branch
+
+```
+USAGE
+  $ poly push:all
+
+EXAMPLE
+  $ poly push:all
+```
+
+_See code: [src/commands/push/all.ts](https://github.com/xura/poly/blob/v0.0.4/src/commands/push/all.ts)_
+
 ## `poly run:all`
 
 Run all projects
@@ -57,23 +71,12 @@ Run all projects
 USAGE
   $ poly run:all
 
+OPTIONS
+  -r, --runner=runner
+
 EXAMPLE
   $ poly run:all
 ```
 
 _See code: [src/commands/run/all.ts](https://github.com/xura/poly/blob/v0.0.4/src/commands/run/all.ts)_
-
-## `poly run:single`
-
-Run a single project
-
-```
-USAGE
-  $ poly run:single
-
-EXAMPLE
-  $ poly run:single
-```
-
-_See code: [src/commands/run/single.ts](https://github.com/xura/poly/blob/v0.0.4/src/commands/run/single.ts)_
 <!-- commandsstop -->
