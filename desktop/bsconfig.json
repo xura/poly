@@ -3,6 +3,9 @@
     "reason": {
         "react-jsx": 3
     },
+    "ppx-flags": [
+        "@jsiebern/bs-material-ui-ppx/ppx6"
+    ],
     "bs-dependencies": [
         "reason-react",
         "@jsiebern/bs-material-ui",

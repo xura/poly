@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 
 import Application from './components/Application';
 import store from './store';
-import { entry } from './Reason';
+import { make as Entry } from './Reason';
 import 'typeface-roboto';
 import './app.global.scss'
 
@@ -18,7 +18,7 @@ const render = (Component: () => JSX.Element) => {
     ReactDOM.render(
         <AppContainer>
             <Provider store={store}>
-                {entry()}
+                <Entry />
             </Provider>
         </AppContainer>,
         mainElement
