@@ -16,7 +16,16 @@ let theme =
 
 let drawer = () =>
   <MaterialUi.List>
-    <ListItem button=true> {"Menu Item" |> React.string} </ListItem>
+    <ListItem button=true>
+      <ListItemIcon> <MscharleyBsMaterialUiIcons.Home.Filled /> </ListItemIcon>
+      <ListItemText> {"Home" |> React.string} </ListItemText>
+    </ListItem>
+    <ListItem button=true>
+      <ListItemIcon>
+        <MscharleyBsMaterialUiIcons.ViewModule.Filled />
+      </ListItemIcon>
+      <ListItemText> {"Collections" |> React.string} </ListItemText>
+    </ListItem>
   </MaterialUi.List>;
 
 let drawerWidth = 240;
@@ -72,5 +81,4 @@ module Root = {
 };
 
 [@react.component]
-let make = () =>
-  MaterialUi.(<MuiThemeProvider theme> <Root /> </MuiThemeProvider>);
+let make = () => <MuiThemeProvider theme> <Root /> </MuiThemeProvider>;

@@ -2,10 +2,10 @@
 
 open MscharleyBsMaterialUiIcons;
 open MaterialUi;
-open Poly;
+open Commands;
 
 let count = Rx.interval(~period=500, ());
-let {changes, start, stop} = poly;
+let {changes, start, stop} = webpackWatch;
 
 [@react.component]
 let make = () => {
