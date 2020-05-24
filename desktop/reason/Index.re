@@ -58,22 +58,13 @@ let style = ReactDOMRe.Style.make;
 
 module Navigation = {
   [@react.component]
-  let make = () => {
+  let make = (~activeRoute) => {
     let classes = RootStyles.useStyles();
-    let _url = ReasonReactRouter.useUrl();
-    let isActive = menuItem => {
-      let location =
-        switch ([%bs.raw {| window.location.href |}] |> Js.String.split("/")) {
-        | [|_, _, _, location|] => location
-        | _ => "home"
-        };
-      menuItem == location;
-    };
 
     <MaterialUi.List>
       <ListItem
         button=true
-        className={isActive("home") ? classes.activePage : ""}
+        className={activeRoute == Route.Home ? classes.activePage : ""}
         onClick={_event => goTo("/home")}>
         <ListItemIcon>
           <MscharleyBsMaterialUiIcons.Home.Filled />
@@ -82,7 +73,7 @@ module Navigation = {
       </ListItem>
       <ListItem
         button=true
-        className={isActive("collections") ? classes.activePage : ""}
+        className={activeRoute == Route.Collections ? classes.activePage : ""}
         onClick={_event => goTo("/collections")}>
         <ListItemIcon>
           <MscharleyBsMaterialUiIcons.ViewModule.Filled />
@@ -104,7 +95,7 @@ module Root = {
         className={classes.drawer}
         classes=[Paper(classes.drawerPaper)]
         variant=`Permanent>
-        <Navigation />
+        <Navigation activeRoute=route />
       </Drawer>
       <main className={classes.content}>
         {switch (route) {

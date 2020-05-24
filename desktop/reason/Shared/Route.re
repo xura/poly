@@ -1,8 +1,8 @@
-type t =
+type route =
   | Home
   | Collections;
 
-let useRoute: unit => t =
+let useRoute: unit => route =
   () => {
     let _url = ReasonReactRouter.useUrl();
     let urlParts =
