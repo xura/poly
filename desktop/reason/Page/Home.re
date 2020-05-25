@@ -3,6 +3,7 @@
 open MscharleyBsMaterialUiIcons;
 open MaterialUi;
 open Commands;
+open Database;
 
 let count = Rx.interval(~period=500, ());
 let {changes, start, stop} = webpackWatch;
@@ -10,6 +11,8 @@ let {changes, start, stop} = webpackWatch;
 [@react.component]
 let make = () => {
   let (message, setMessage) = React.useState(() => "");
+  Js.log("Maybe test:");
+  let value = maybeTest(0);
 
   React.useLayoutEffect0(() => {
     changes
@@ -37,7 +40,7 @@ let make = () => {
     </ListItem>
     <ListItem button=true>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
-      <ListItemText> {message |> React.string} </ListItemText>
+      <ListItemText> {string_of_int(value) |> React.string} </ListItemText>
     </ListItem>
   </MaterialUi.List>;
 };

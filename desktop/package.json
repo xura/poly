@@ -140,6 +140,7 @@
     "pouchdb-adapter-memory": "^7.2.1",
     "pouchdb-replication": "^7.2.1",
     "prettier": "^1.18.2",
+    "purify-ts": "^0.15.1",
     "re-classnames": "^4.1.0",
     "react-hot-loader": "^4.8.8",
     "react-test-renderer": "^16.8.6",
