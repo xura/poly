@@ -1,5 +1,3 @@
-[@bs.val] external alert: string => unit = "alert";
-
 open MscharleyBsMaterialUiIcons;
 open MaterialUi;
 open Commands;
@@ -12,7 +10,7 @@ let {changes, start, stop} = webpackWatch;
 let make = () => {
   let (message, setMessage) = React.useState(() => "");
   Js.log("Maybe test:");
-  let value = maybeTest(0);
+  let value = getDatabase();
 
   React.useLayoutEffect0(() => {
     changes
@@ -40,7 +38,12 @@ let make = () => {
     </ListItem>
     <ListItem button=true>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
-      <ListItemText> {string_of_int(value) |> React.string} </ListItemText>
+      <ListItemText>
+        {switch (value) {
+         | None => "None" |> React.string
+         | Some(number) => string_of_int(number) |> React.string
+         }}
+      </ListItemText>
     </ListItem>
   </MaterialUi.List>;
 };
