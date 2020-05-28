@@ -1,7 +1,13 @@
-import { Maybe, Nothing, Just } from 'purify-ts';
+import { getDb } from '../../../main/database';
 
-export const maybeTest = (arg: number): Maybe<Number> => {
-    const val = arg === 0 ? Just(arg) : Nothing;
+export const insertHero = () => getDb().then(db => {
     debugger;
-    return val;
-}
+    return db.heroes.insert({
+        passportId: 'myId',
+        firstName: 'piotr',
+        lastName: 'potter',
+        age: 5
+    }).then(document => {
+        debugger;
+    })
+});

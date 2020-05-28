@@ -1,6 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
+import { getDb } from './database';
 
 let win: BrowserWindow | null;
 
@@ -46,7 +47,19 @@ const createWindow = async () => {
     });
 };
 
-app.on('ready', createWindow);
+const createDb = async () => {
+
+    await getDb().then(db => db.server({
+        path: '/db',
+        port: 10102,
+        cors: true
+    }));
+};
+
+app.on('ready', async () => {
+    await createDb();
+    await createWindow()
+});
 
 app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

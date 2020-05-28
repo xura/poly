@@ -10,7 +10,7 @@ let {changes, start, stop} = webpackWatch;
 let make = () => {
   let (message, setMessage) = React.useState(() => "");
   Js.log("Maybe test:");
-  let value = getDatabase();
+  //let value = getDatabase();
 
   React.useLayoutEffect0(() => {
     changes
@@ -36,14 +36,13 @@ let make = () => {
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
       <ListItemText> {message |> React.string} </ListItemText>
     </ListItem>
-    <ListItem button=true>
+    <ListItem button=true onClick={_event => getDatabase()}>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
-      <ListItemText>
-        {switch (value) {
-         | None => "None" |> React.string
-         | Some(number) => string_of_int(number) |> React.string
-         }}
-      </ListItemText>
+      <ListItemText> {"Stuff and things" |> React.string} </ListItemText>
     </ListItem>
   </MaterialUi.List>;
+  //  }}
+  //  | Some(number) => string_of_int(number) |> React.string
+  //  | None => "None" |> React.string
+  // {switch (value) {
 };
