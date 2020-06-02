@@ -36,7 +36,7 @@ let make = () => {
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
       <ListItemText> {message |> React.string} </ListItemText>
     </ListItem>
-    <ListItem button=true onClick={_event => getDatabase()}>
+    <ListItem button=true>
       <ListItemIcon> <Code.Filled /> </ListItemIcon>
       <ListItemText> {"Stuff and things" |> React.string} </ListItemText>
     </ListItem>

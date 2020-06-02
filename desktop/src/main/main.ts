@@ -1,7 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import * as path from 'path';
 import * as url from 'url';
-import { getDb } from './database';
 
 let win: BrowserWindow | null;
 
@@ -20,7 +19,13 @@ const createWindow = async () => {
         await installExtensions();
     }
 
-    win = new BrowserWindow({ width: 800, height: 600 });
+    win = new BrowserWindow({
+        webPreferences: {
+            nodeIntegration: true
+        },
+        width: 800,
+        height: 600
+    });
 
     if (process.env.NODE_ENV !== 'production') {
         process.env.ELECTRON_DISABLE_SECURITY_WARNINGS = '1'; // eslint-disable-line require-atomic-updates
@@ -47,17 +52,8 @@ const createWindow = async () => {
     });
 };
 
-const createDb = async () => {
-
-    await getDb().then(db => db.server({
-        path: '/db',
-        port: 10102,
-        cors: true
-    }));
-};
 
 app.on('ready', async () => {
-    await createDb();
     await createWindow()
 });
 
