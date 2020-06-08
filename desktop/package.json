@@ -81,6 +81,7 @@
     "@material-ui/icons": "^4.9.1",
     "@mscharley/bs-material-ui-icons": "^1.0.2",
     "@types/electron-devtools-installer": "^2.2.0",
+    "@types/ramda": "^0.27.6",
     "@types/react": "^16.8.18",
     "@types/react-dom": "^16.8.4",
     "@types/react-test-renderer": "^16.8.1",
@@ -109,18 +110,26 @@
     "html-webpack-plugin": "^3.2.0",
     "husky": "^4.2.1",
     "image-webpack-loader": "^4.6.0",
+    "immer": "^6.0.9",
     "jest": "^24.8.0",
     "lint-staged": "^10.0.7",
+    "most": "^1.8.1",
     "node-sass": "^4.14.1",
     "observable-process": "^7.0.2",
     "prettier": "^1.18.2",
+    "purify-ts": "^0.15.1",
+    "ramda": "^0.27.0",
     "re-classnames": "^4.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
+    "react-redux": "^7.2.0",
     "react-test-renderer": "^16.8.6",
     "reason-promise": "^1.0.2",
     "reason-react": "^0.8.0",
+    "redux": "^4.0.5",
+    "redux-most": "^0.8.0",
+    "redux-observable": "^1.2.0",
     "rxjs": "^6.5.5",
     "sass-loader": "^8.0.2",
     "source-map-loader": "^0.2.4",
@@ -129,6 +138,7 @@
     "ts-jest": "^24.0.2",
     "ts-node": "^8.10.1",
     "typeface-roboto": "^0.0.75",
+    "typesafe-actions": "^5.1.0",
     "typescript": "^3.4.5",
     "url-loader": "^4.1.0",
     "webpack": "^4.43.0",
@@ -156,5 +166,6 @@
     "win": {
       "target": "nsis"
     }
-  }
+  },
+  "dependencies": {}
 }
