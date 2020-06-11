@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
-import { entityReducer, IEntityState } from "./entity.reducer";
+import { entityReducer, EntityState } from "./entity.reducer";
 
 export type TRootState = {
-    entity: IEntityState;
+    entity: EntityState;
 };
 
 const reducers = combineReducers({

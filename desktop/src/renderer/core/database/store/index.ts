@@ -1,11 +1,10 @@
 import { applyMiddleware, compose, createStore } from "redux";
 import { createEpicMiddleware } from "redux-observable";
-import { ActionType } from "typesafe-actions";
 
-import * as actions from "../actions/entity.actions";
+import * as actions from "../actions";
 import reducers, { TRootState } from "../reducers";
-
-export type ActionsType = ActionType<typeof actions>;
+import epics from '../epics';
+import {TActions} from "../actions";
 
 declare global {
     interface Window {
@@ -14,14 +13,14 @@ declare global {
 }
 
 const epicMiddleware = createEpicMiddleware<
-    ActionsType,
-    ActionsType,
+    TActions,
+    TActions,
     TRootState
 >();
 const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-function configureStore(initialState?: TRootState) {
+function configureStore(initialState: TRootState = { entity: {}}) {
     const middlewares = [
         epicMiddleware,
     ];
@@ -37,6 +36,9 @@ function configureStore(initialState?: TRootState) {
 
 const store = configureStore();
 
-// epicMiddleware.run(epics);
+epicMiddleware.run(epics);
+
+// @ts-ignore
+window.store = store;
 
 export { store, actions };

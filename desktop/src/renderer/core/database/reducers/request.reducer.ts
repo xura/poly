@@ -1,12 +1,17 @@
 import { getType } from 'typesafe-actions';
 
 import { produce } from "immer";
-import { entityActions, TEntityActions } from "../actions";
+import { requestActions, TRequestActions } from "../actions";
 import { Entity } from "../models";
-import TWriteable from "../shared/TWritable";
 
-export interface EntityState {
-    readonly entity?: Entity
+type TWriteable<T> = { -readonly [P in keyof T]: T[P] };
+
+export interface RequestState {
+    sent: boolean;
+    resolved: boolean;
+    error: boolean;
+    type: string;
+    payload: any;
 }
 
 export const entityReducer = produce(
@@ -14,9 +19,6 @@ export const entityReducer = produce(
         switch (action.type) {
             case getType(entityActions.insert):
                 draft.entity = action.payload;
-                break;
-            default:
-                return draft;
         }
     }
 );
