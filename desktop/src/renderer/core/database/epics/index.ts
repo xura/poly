@@ -1,7 +1,6 @@
-import { combineEpics} from "redux-observable";
+import { combineEpics } from "redux-observable";
+import requestEpics from "./request.epics";
 
-import entityEpics from './entity.epics';
-
-const epics = combineEpics(...entityEpics);
+const epics = combineEpics(...requestEpics);
 
 export default epics;
