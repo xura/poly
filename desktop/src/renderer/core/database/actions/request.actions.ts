@@ -1,8 +1,15 @@
 import { deprecated, ActionType } from 'typesafe-actions';
 import { REQUEST_RESOLVED, REQUEST_SENT } from "../constants";
+import { Crud } from '../enums';
 
 export enum RequestType {
-    Entity
+    ENTITY
+}
+
+export type RequestPayload = {
+    type: RequestType;
+    body: any;
+    crud: Crud;
 }
 
 const { createAction } = deprecated;
@@ -12,15 +19,14 @@ const resolved = createAction(
 );
 
 const sent = createAction(
-    REQUEST_SENT, resolve => (type: RequestType, body: any) => resolve({ type, body })
+    REQUEST_SENT, resolve => (type: RequestType, body: any, crud: Crud) => resolve({ type, body, crud })
 )
+export type RequestSentParameters = Parameters<typeof sent>;
 
 export const requestActions = {
     resolved,
     sent
 }
 
-// @ts-ignore
-window.requestActions = requestActions;
 
 export type TRequestActions = ActionType<typeof requestActions>;

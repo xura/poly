@@ -5,15 +5,15 @@ import { entityActions, TEntityActions } from "../actions";
 import { Entity } from "../models";
 import TWriteable from "../shared/TWritable";
 
-export interface EntityState {
-    readonly entity?: Entity
+export interface EntitiesState {
+    readonly all?: Entity[]
 }
 
 export const entityReducer = produce(
-    (draft: TWriteable<EntityState> = {}, action: TEntityActions) => {
+    (draft: TWriteable<EntitiesState> = {}, action: TEntityActions) => {
         switch (action.type) {
             case getType(entityActions.insert):
-                draft.entity = action.payload;
+                draft.all?.push(action.payload);
                 break;
             default:
                 return draft;

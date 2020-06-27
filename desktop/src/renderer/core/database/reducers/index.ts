@@ -1,12 +1,12 @@
 import { combineReducers } from "redux";
-import { entityReducer, EntityState } from "./entity.reducer";
+import { entityReducer, EntitiesState } from "./entity.reducer";
 
 export type TRootState = {
-    entity: EntityState;
+    entities: EntitiesState;
 };
 
 const reducers = combineReducers({
-    entity: entityReducer
+    entities: entityReducer
 });
 
 export default reducers;

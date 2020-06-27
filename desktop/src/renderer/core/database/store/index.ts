@@ -4,7 +4,7 @@ import { createEpicMiddleware } from "redux-observable";
 import * as actions from "../actions";
 import reducers, { TRootState } from "../reducers";
 import epics from '../epics';
-import {TActions} from "../actions";
+import { TActions, requestActions, entityActions } from "../actions";
 
 declare global {
     interface Window {
@@ -20,7 +20,7 @@ const epicMiddleware = createEpicMiddleware<
 const composeEnhancers =
     window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-function configureStore(initialState: TRootState = { entity: {}}) {
+function configureStore(initialState: TRootState = { entities: {} }) {
     const middlewares = [
         epicMiddleware,
     ];
@@ -39,6 +39,10 @@ const store = configureStore();
 epicMiddleware.run(epics);
 
 // @ts-ignore
-window.store = store;
+window.store = {
+    store: store,
+    requestActions: requestActions,
+    entityActions: entityActions
+}
 
 export { store, actions };

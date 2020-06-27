@@ -22,6 +22,7 @@ module.exports = {
             test: /\.(ts|js)x?$/,
             options: {
                 presets: ["@babel/typescript"],
+                plugins: ["@babel/plugin-proposal-optional-chaining", "@babel/plugin-proposal-nullish-coalescing-operator"]
             },
             exclude: /node_modules/,
             loader: 'babel-loader',
