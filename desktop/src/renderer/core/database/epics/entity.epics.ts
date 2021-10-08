@@ -6,15 +6,19 @@ import { isActionOf } from "typesafe-actions";
 import {entityActions, requestActions, TActions} from "../actions";
 import { TRootState } from "../reducers";
 import { insertEntity } from '../services';
+import {Entity} from "../models";
 
 const insertEntityEpic: Epic<TActions, TActions, TRootState> = (actions$, store) => {
     return actions$.pipe(
         filter(action => {
-            const b = [[]]
+            debugger;
             return isActionOf(entityActions.insert)(action)
         }),
-        exhaustMap(action => from(insertEntity()).pipe(
-            map(requestActions.resolved)
+        exhaustMap(action => from(insertEntity(action.payload)).pipe(
+            map((a: Entity, b: number) => {
+                debugger;
+                return requestActions.resolved(a)
+            })
         ))
     );
 }

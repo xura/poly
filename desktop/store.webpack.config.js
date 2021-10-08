@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/renderer/core/database/store/index',
+    entry: './src/renderer/core/database/store/test',
     output: {
         publicPath: "/",
         path: path.resolve(__dirname, 'data-store/dist'),

@@ -1,6 +1,6 @@
 import { Entity } from "../models";
 
-const insertEntity = (): Promise<Entity> => fetch(`https://httpbin.org/get`).then(response => response.json());
+const insertEntity = (entity: Entity): Promise<Entity> => fetch(`https://httpbin.org/get`).then(response => entity);
 
 export {
     insertEntity,
