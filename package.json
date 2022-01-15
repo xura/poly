@@ -44,7 +44,7 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.5",
     "serve-handler": "^6.1.2",
-    "shelljs": "^0.8.3",
+    "shelljs": "^0.8.5",
     "simple-git": "^1.132.0",
     "spinnies": "^0.5.1",
     "ts-node": "^8",
