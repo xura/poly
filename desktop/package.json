@@ -135,7 +135,7 @@
     "image-webpack-loader": "^4.6.0",
     "jest": "^24.8.0",
     "lint-staged": "^10.0.7",
-    "node-sass": "^4.12.0",
+    "node-sass": "^7.0.0",
     "observable-process": "^7.0.2",
     "pouchdb-adapter-memory": "^7.2.1",
     "pouchdb-replication": "^7.2.1",
